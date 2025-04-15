@@ -100,7 +100,16 @@ function nom2($param1) {
 // nom2("Jean");
 // nom2("Toto");
 
+// un fonction peut renvoyer un résultat pour le stocker en mémoire pour plus tard
+function carre($nombre) {
+    $resultat = $nombre ** 2;
+    echo($resultat);
+    return $resultat;
+}
+$nombreAuCarre = carre(2);
+echo($nombreAuCarre);
 
+## Exercice ===> reprendre tous les exercices déjà faits, et les transformer en fonctions !
 
 
 

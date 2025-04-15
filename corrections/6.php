@@ -10,6 +10,14 @@
 // Sinon, affiche : "Alice n'a pas validé l'année."
 // Affiche un séparateur (echo "------";) entre chaque étudiant pour plus de lisibilité.
 
+function sautDeLigne() {
+    echo("<br>");
+}
+
+function barre() {
+    echo("-------------");
+}
+
 $etudiants = [
     [
         "prenom" => "Alice",
@@ -25,26 +33,37 @@ $etudiants = [
     ]
 ];
 
-foreach ($etudiants as $etudiant) {    
-    echo("<br>");
-    echo "------";
+function getStudentMoyenne($etudiant) {
     $sum = 0;
     $nb_note = 0;
     foreach ( $etudiant["notes"] as $note ) {
-        echo("<br>");
+        sautDeLigne();
         echo("note : " . $note);
         $sum += $note;
         $nb_note += 1;
     }
     $moyenne = $sum / $nb_note;
-    echo("<br>");
-    echo($etudiant["prenom"] . " a une moyenne de " . $moyenne . ".");
-    echo("<br>");
+    return $moyenne;
+}
+
+function etudiantAMoyenne($etudiant, $moyenne) {
     if ($moyenne > 10) {
         echo($etudiant["prenom"] . " a validée son année.");
     } else {
         echo($etudiant["prenom"] . " n'a pas validée son année.");
     }
-    echo("<br>");
-    echo "------";
+}
+
+foreach ($etudiants as $etudiant) {    
+    sautDeLigne();
+    barre();
+    $moyenne = getStudentMoyenne($etudiant);
+    sautDeLigne();
+    echo($etudiant["prenom"] . " a une moyenne de " . $moyenne . ".");
+    sautDeLigne();
+
+    etudiantAMoyenne($etudiant, $moyenne);
+
+    sautDeLigne();
+    barre();
 }
